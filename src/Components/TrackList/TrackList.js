@@ -1,4 +1,6 @@
 import React from 'react';
+import './TrackList.css';
+import Track from '../Track/Track';
 
 class TrackList extends React.Component {
     constructor(props) {
@@ -9,8 +11,11 @@ class TrackList extends React.Component {
     // functions and set states
     render() {
       return (
-        <div className = "TrackList">
+        <div className="TrackList">
             // You will add a map method that renders a set of Track components
+            <Track />
+            <Track />
+            <Track />
         </div>
       );
     }
