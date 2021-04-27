@@ -23,11 +23,13 @@ class App extends React.Component {
       ]
     };
   }
-  
-  addTrack() {
-    //
+
+  addTrack(track) {
+    if(track.id !== this.playlistTracks.id) {
+      this.playListTracks.push(track);
+    }
   }
-  // functions and set states
+
   render() {
     return (
       <div>
