@@ -7,11 +7,6 @@ import Playlist from '../Playlist/Playlist';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {};
-    // .bind(this);
-
-    this.addTrack = this.addTrack.bind(this);
-
     this.state = {
       searchResults: [
         {name: 'name1', artist: 'artist1', album:'album1', id: 'id1'},
@@ -25,8 +20,8 @@ class App extends React.Component {
         {name: 'playlistName3', artist: 'playlistArtist3', album:'playlistAlbum3', id: 'id6'},
       ]
     };
+    this.addTrack = this.addTrack.bind(this);
   }
-
   
   addTrack(track) {
     let tracks = this.state.playListTracks;
@@ -38,7 +33,6 @@ class App extends React.Component {
     }
   }
   
-
   render() {
     return (
       <div>
