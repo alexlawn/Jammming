@@ -10,11 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [
-        {name: 'name1', artist: 'artist1', album:'album1', id: 'id1'},
-        {name: 'name2', artist: 'artist2', album:'album2', id: 'id2'},
-        {name: 'name3', artist: 'artist3', album:'album3', id: 'id3'}
-      ],
+      searchResults: [],
       playListName: 'myPlaylist',
       playListTracks: [
         {name: 'playlistName1', artist: 'playlistArtist1', album:'playlistAlbum1', id: 'id4'},
@@ -53,8 +49,10 @@ class App extends React.Component {
     let trackURIs = this.state.playListTracks.map(track => track.uri);
   }
 
-  search(searchTerm) {
-    console.log(searchTerm);
+  search(term) {
+    Spotify.search(term).then(searchResults => {
+      this.setState({searchResults: searchResults});
+    })
   }
 
   render() {
@@ -63,7 +61,7 @@ class App extends React.Component {
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar
-            onSearch={this.Spotify.search}
+            onSearch={this.search}
           />
           <div className="App-playlist">
             <SearchResults
