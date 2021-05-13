@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   savePlaylist() {
+    alert("this method is linked to the button");
     const trackUris = this.state.playListTracks.map(track => track.uri);
     Spotify.savePlaylist(this.state.playListName, trackUris).then(() => {
         this.setState({

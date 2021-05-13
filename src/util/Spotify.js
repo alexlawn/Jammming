@@ -1,13 +1,13 @@
 let accessToken;
 const clientId = '9a0c73ca58354ba783f529e6023bb240';
-const redirectUri = "http://jammmingTrialAlex.surge.sh/";
+const redirectUri = "http://jammmingTrialAlex.surge.sh";
 
 const Spotify = {
     getAccessToken() {
         if(accessToken) {
             return accessToken;
         }
-         // If the access token is not already set, check the URL to see if it has just been obtained. Can check URL using window.location.href
+
         // Check for access token match:
         const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
         const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
@@ -41,8 +41,8 @@ const Spotify = {
                 artist: track.artists[0].name,
                 album: track.album.name,
                 uri: track.uri
-            }))
-        })
+            }));
+        });
     },
     savePlaylist(name, trackUris) {
         if(!name || !trackUris.length){
@@ -69,8 +69,8 @@ const Spotify = {
                         headers: headers,
                         method: 'POST',
                         body: JSON.stringify({uris: trackUris})
-                    })
-            })
+                    });
+            });
         })
     }
 }
