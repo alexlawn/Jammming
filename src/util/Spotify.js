@@ -1,6 +1,6 @@
+const clientId = '9a0c73ca58354ba783f529e6023bb240'; //Create a working Spotify Web API project to get the client id
+const redirectUri = "http://jammmingTrialAlex.surge.sh"; //A redirect uri that matches value in the Spotify WEB API project page
 let accessToken;
-const clientId = '9a0c73ca58354ba783f529e6023bb240';
-const redirectUri = "http://jammmingTrialAlex.surge.sh";
 
 const Spotify = {
     getAccessToken() {
@@ -8,14 +8,14 @@ const Spotify = {
             return accessToken;
         }
 
-        // Check for access token match:
+        // Check for access token match
         const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
         const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
         if(accessTokenMatch && expiresInMatch) {
             accessToken = accessTokenMatch[1];
             let expiresIn = Number(expiresInMatch[1]);
-            // This clears the parameters, allowing us to grab a new access token when it expires:
+            // This clears the parameters, allowing us to grab a new access token when it expires
             window.setTimeout(() => accessToken = '', expiresIn * 1000);
             window.history.pushState('Access Token', null, '/');
             return accessToken;
