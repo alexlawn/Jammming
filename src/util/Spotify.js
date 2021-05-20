@@ -28,8 +28,9 @@ const Spotify = {
         const accessToken = Spotify.getAccessToken();
         return fetch(
             `https://api.spotify.com/v1/search?type=track&q=${term}`,
-            {headers: {Authorization: `Bearer ${accessToken}`}}
-        ).then(response => {
+            {headers: {
+                Authorization: `Bearer ${accessToken}`}
+        }).then(response => {
             return response.json();
         }).then(jsonResponse => {
             if(!jsonResponse.tracks){
@@ -42,7 +43,7 @@ const Spotify = {
                 album: track.album.name,
                 uri: track.uri
             }));
-        });
+        })
     },
     savePlaylist(name, trackUris) {
         if(!name || !trackUris.length){
@@ -64,15 +65,16 @@ const Spotify = {
             }).then(response => response.json()
             ).then(jsonResponse => {
                 const playListId = jsonResponse.id;
-                return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playListId}/tracks`,
+                return fetch(
+                    `https://api.spotify.com/v1/users/${userId}/playlists/${playListId}/tracks`,
                     {
                         headers: headers,
                         method: 'POST',
                         body: JSON.stringify({uris: trackUris})
-                    });
-            });
+                    })
+            })
         })
     }
-}
+};
 
 export default Spotify;
