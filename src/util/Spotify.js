@@ -1,4 +1,4 @@
-const clientId = '9a0c73ca58354ba783f529e6023bb240'; //Create a working Spotify Web API project to get the client id
+const clientId = ''; //Create a working Spotify Web API project to get the client id
 const redirectUri = "http://jammmingTrialAlex.surge.sh"; //A redirect uri that matches value in the Spotify WEB API project page
 let accessToken;
 
